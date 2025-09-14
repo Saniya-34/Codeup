@@ -1,0 +1,21 @@
+services:
+  # API Service
+  - type: web
+    name: codeup-api
+    env: node
+    buildCommand: cd api && npm install
+    startCommand: cd api && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    # Add your environment variables here
+    
+  # Client Service (Static Site)
+  - type: web
+    name: codeup-client
+    env: static
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: ./client/dist
+    # Add your environment variables here
